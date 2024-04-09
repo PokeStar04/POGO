@@ -179,6 +179,7 @@ class Game:
         self.active_player = "⚫"
         self.is_game_over = False
         self.winner = "Noone"
+        self.turn = 0
 
     # Place a pawn on the board (checks if the move is legal before placing it)
     # It takes a position (x, y), a Board object instance and a color
@@ -213,6 +214,8 @@ class Game:
         else:
             self.active_player = "⚫"
             print("C'est au tour du joueur noir")
+            
+        self.turn += 1
 
     # Update the players score after a successful move
     def update_score(self, board_instance):
@@ -226,17 +229,29 @@ class Game:
                 b_score += 1
         self.score_black = b_score
         self.score_white = w_score
-  
 
     # Check for a valid move, and end the game if there is none for the current player
     def check_for_valid_moves(self, board_instance):
         is_game_over = True
+        first_player_can_play = False
+
+        # Check if the current player can play
         for tile_index in board_instance.board:
             move_to_check = board_instance.is_legal_move(
                 tile_index.x_pos, tile_index.y_pos, self.active_player)
             if move_to_check != False:
+                first_player_can_play = True
                 is_game_over = False
 
+        # If not, check for the other player and skip the first player's turn
+        if not first_player_can_play:
+            self.change_active_player()
+            for tile_index in board_instance.board:
+                move_to_check = board_instance.is_legal_move(tile_index.x_pos, tile_index.y_pos, self.active_player)
+                if move_to_check != False:
+                  is_game_over = False  
+
+        # If neither can play, end the game
         if is_game_over:
             self.check_for_winner()
             self.is_game_over = True
@@ -269,14 +284,14 @@ class Bot:
         max_score = 0
         point_array= []
         matrice = [
-            10,1,1,1,1,1,1,10,
-            10,1,1,1,1,1,1,10,
-            10,1,1,1,1,1,1,10,
-            10,1,1,1,1,1,1,10,
-            10,1,1,1,1,1,1,10,
-            10,1,1,1,1,1,1,10,
-            10,1,1,1,1,1,1,10,
-            10,1,1,1,1,1,1,10,
+            10,0,0,0,0,0,0,10,
+            0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,
+            10,0,0,0,0,0,0,10,
         ]
         
         for tile_ammount in active_board.board:   
