@@ -265,6 +265,55 @@ class Bot:
     def check_valid_moves(self,active_board,active_game):
     
         mon_tableau = []
+        index = 0
+        max_score = 0
+        point_array= []
+        matrice = [
+            10,1,1,1,1,1,1,10,
+            10,1,1,1,1,1,1,10,
+            10,1,1,1,1,1,1,10,
+            10,1,1,1,1,1,1,10,
+            10,1,1,1,1,1,1,10,
+            10,1,1,1,1,1,1,10,
+            10,1,1,1,1,1,1,10,
+            10,1,1,1,1,1,1,10,
+        ]
+        
+        for tile_ammount in active_board.board:   
+            tile_coordinate= active_board.is_legal_move(tile_ammount.x_pos,tile_ammount.y_pos,active_game.active_player)
+     
+            if(tile_coordinate != False) :
+                score = 0
+                # print([tile_ammount.x_pos,tile_ammount.y_pos])
+
+                for point in tile_coordinate:
+                    index+= 1
+                    score += matrice[index]
+                if score > max_score:
+                    max_score = score
+                    point_array = [[tile_ammount.x_pos,tile_ammount.y_pos]]
+                elif score == max_score:
+                    point_array.append([tile_ammount.x_pos,tile_ammount.y_pos])
+        return random.choice(point_array)
+
+
+
+            # le nombre de point supposé après le coup - le nombre de point avant le coup = le nombre de point gagné sur le coup
+
+            # Comparer le nombre maximal de point et élire le meilleur coup à jouer
+
+
+
+
+class Bot2:
+    def __init__(self):
+        self.name = "Name of your Bot"
+
+    # BOT FUNCTIONS
+
+    def check_valid_moves(self,active_board,active_game):
+    
+        mon_tableau = []
         max_score = 0
         point_array= []
         for tile_ammount in active_board.board:   
@@ -283,12 +332,6 @@ class Bot:
            
         return random.choice(point_array)
 
-
-
-            # le nombre de point supposé après le coup - le nombre de point avant le coup = le nombre de point gagné sur le coup
-
-            # Comparer le nombre maximal de point et élire le meilleur coup à jouer
-
 # Create a new board & a new game instances
 othello_board = Board(8)
 othello_game = Game()
@@ -301,7 +344,7 @@ othello_board.draw_board("Content")
 
 # Create 2 bots
 myBot = Bot()
-otherBot = Bot()
+otherBot = Bot2()
 
 # Loop until the game is over
 while not othello_game.is_game_over:
@@ -318,5 +361,5 @@ while not othello_game.is_game_over:
 
     # Second player / bot logic goes here
     else:
-        move_coordinates = myBot.check_valid_moves(othello_board,othello_game)
+        move_coordinates = otherBot.check_valid_moves(othello_board,othello_game)
         othello_game.place_pawn(move_coordinates[0], move_coordinates[1], othello_board, othello_game.active_player)
