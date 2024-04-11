@@ -271,7 +271,8 @@ class Bot:
         # print("je suis au tour :",tour)
         myPlayer = active_game.active_player
         # print("je suis au joueur :",myPlayer)
-        
+        test = active_game
+        print(test)
         mon_tableau = []
         index = 0
         max_score = -666

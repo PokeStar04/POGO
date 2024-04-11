@@ -279,10 +279,15 @@ class Bot:
 
     def check_valid_moves(self,active_board,active_game):
         tour =active_game.turn
-        print("je suis au tour :",tour)
+        # print("je suis au tour :",tour)
         myPlayer = active_game.active_player
-        print("je suis au joueur :",myPlayer)
+        # print("je suis au joueur :",myPlayer)
+        test = active_board.board[4]
+        print(vars(test))
+        print(test.content)
         
+
+ 
         mon_tableau = []
         index = 0
         max_score = -666
@@ -290,71 +295,71 @@ class Bot:
         if (myPlayer == "⚫"):
             if tour < 8 :
                 matrice = [
-                    10, 5, 2, 2, 2, 2, 5, 10,
-                    5, -3, 1, 1, 1, 1, -3,  5,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    5, -3, 1, 1, 1, 1, -3,  5,
-                    10, 5, 2, 2, 2, 2, 5, 10,
+                    100, 0, 0, 0, 0, 0, 0, 100,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    100, 0, 0, 0, 0, 0, 0, 100,
                 ]
             elif tour < 40:
-                matrice = [
-                    10, 5, 2, 2, 2, 2, 5, 10,
-                    5, -3, 1, 1, 1, 1, -3,  5,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    5, -3, 1, 1, 1, 1, -3,  5,
-                    10, 5, 2, 2, 2, 2, 5, 10,
+                 matrice = [
+                    100, 0, 0, 0, 0, 0, 0, 100,
+                    0, -10, 0, 0, 0, 0, -10, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, -10, 0, 0, 0, 0, -10, 0,
+                    100, 0, 0, 0, 0, 0, 0, 100,
                 ]
             else :
-                matrice = [
-                    10, 5, 2, 2, 2, 2, 5, 10,
-                    5, -3, 1, 1, 1, 1, -3,  5,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    5, -3, 1, 1, 1, 1, -3,  5,
-                    10, 5, 2, 2, 2, 2, 5, 10,
+                    matrice = [
+                    100, 0, 0, 0, 0, 0, 0, 100,
+                    0, -10, 0, 0, 0, 0, -10, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, -10, 0, 0, 0, 0, -10, 0,
+                    100, 0, 0, 0, 0, 0, 0, 100,
                 ]
         else:
             # mon joueur est blanc
             if tour < 8 :
-                matrice = [
-                    10, 5, 2, 2, 2, 2, 5, 10,
-                    5, -3, 1, 1, 1, 1, -3,  5,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    5, -3, 1, 1, 1, 1, -3,  5,
-                    10, 5, 2, 2, 2, 2, 5, 10,
+                 matrice = [
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
                 ]
             elif tour < 40:
-                matrice = [
-                    10, 5, 2, 2, 2, 2, 5, 10,
-                    5, -3, 1, 1, 1, 1, -3,  5,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    5, -3, 1, 1, 1, 1, -3,  5,
-                    10, 5, 2, 2, 2, 2, 5, 10,
+              matrice = [
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
                 ]
             else :
-                matrice = [
-                    10, 5, 2, 2, 2, 2, 5, 10,
-                    5, -3, 1, 1, 1, 1, -3,  5,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    5, -3, 1, 1, 1, 1, -3,  5,
-                    10, 5, 2, 2, 2, 2, 5, 10,
+                 matrice = [
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
                 ]
             
         
@@ -368,21 +373,46 @@ class Bot:
                 # print([tile_ammount.x_pos,tile_ammount.y_pos])
 
                 for point in tile_coordinate:
-                    index+= 1
-                    score += matrice[index]+point[0]
+                    score += point[0]
+                score +=matrice[index]
+                    
                 if score > max_score:
                     max_score = score
                     point_array = [[tile_ammount.x_pos,tile_ammount.y_pos]]
                 elif score == max_score:
                     point_array.append([tile_ammount.x_pos,tile_ammount.y_pos])
+                    
+            index += 1
         return random.choice(point_array)
 
 
 
-            # le nombre de point supposé après le coup - le nombre de point avant le coup = le nombre de point gagné sur le coup
+class Bot2:
+    def __init__(self):
+        self.name = "Name of your Bot"
 
-            # Comparer le nombre maximal de point et élire le meilleur coup à jouer
+    # BOT FUNCTIONS
 
+    def check_valid_moves(self,active_board,active_game):
+    
+        mon_tableau = []
+        max_score = 0
+        point_array= []
+        for tile_ammount in active_board.board:   
+            tile_coordinate= active_board.is_legal_move(tile_ammount.x_pos,tile_ammount.y_pos,active_game.active_player)
+     
+            if(tile_coordinate != False) :
+                score = 0
+                for point in tile_coordinate:
+                    score += point[0]
+                 
+                if score > max_score:
+                    max_score = score
+                    point_array = [[tile_ammount.x_pos,tile_ammount.y_pos]]
+                elif score == max_score:
+                    point_array.append([tile_ammount.x_pos,tile_ammount.y_pos])
+           
+        return random.choice(point_array)
 
 
 
