@@ -282,7 +282,7 @@ class Bot:
         print("je suis au tour :",tour)
         myPlayer = active_game.active_player
         print("je suis au joueur :",myPlayer)
-
+        
         mon_tableau = []
         index = 0
         max_score = -666
@@ -369,7 +369,7 @@ class Bot:
 
                 for point in tile_coordinate:
                     index+= 1
-                    score += matrice[index]
+                    score += matrice[index]+point[0]
                 if score > max_score:
                     max_score = score
                     point_array = [[tile_ammount.x_pos,tile_ammount.y_pos]]
