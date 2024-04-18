@@ -271,111 +271,156 @@ class Game:
             print("Égalité !")
 
 
-class Bot:
+class MERUEM:
     def __init__(self):
         self.name = "Name of your Bot"
 
     # BOT FUNCTIONS
 
+    
+    
+        
+    def count_empty_tiles(self, active_board, xBase, yBase, yMax, xBase1, yBase1, yMax1):
+        count_range = 0
+        for tile in active_board.board:
+            # Check if the tile is within the specified rectangle
+            if xBase <= tile.x_pos <= xBase1 and yBase <= tile.y_pos <= yMax1:
+                # Check if the tile is empty
+                if tile.content == "🟩":
+                    count_range += 1
+        return count_range
+
     def check_valid_moves(self,active_board,active_game):
         tour =active_game.turn
         # print("je suis au tour :",tour)
-        myPlayer = active_game.active_player
-        # print("je suis au joueur :",myPlayer)
-        test = active_board.board[4]
-        print(vars(test))
-        print(test.content)
+        myPlayerColor = active_game.active_player
+     
         
 
  
-        mon_tableau = []
-        index = 0
+        indexMatrice = 0
         max_score = -666
         point_array= []
-        if (myPlayer == "⚫"):
-            if tour < 8 :
-                matrice = [
-                    100, 0, 0, 0, 0, 0, 0, 100,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    100, 0, 0, 0, 0, 0, 0, 100,
-                ]
-            elif tour < 40:
-                 matrice = [
-                    100, 0, 0, 0, 0, 0, 0, 100,
-                    0, -10, 0, 0, 0, 0, -10, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, -10, 0, 0, 0, 0, -10, 0,
-                    100, 0, 0, 0, 0, 0, 0, 100,
-                ]
-            else :
-                    matrice = [
-                    100, 0, 0, 0, 0, 0, 0, 100,
-                    0, -10, 0, 0, 0, 0, -10, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, -10, 0, 0, 0, 0, -10, 0,
-                    100, 0, 0, 0, 0, 0, 0, 100,
-                ]
-        else:
-            # mon joueur est blanc
-            if tour < 8 :
-                 matrice = [
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                ]
-            elif tour < 40:
-              matrice = [
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                ]
-            else :
-                 matrice = [
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0,
-                ]
+        matrice = [
+                100, -1, -1, -1, -1, -1, -1, 100,
+                -1, -30, 0, 0, 0, 0, -30, -1,
+                -1, 0, 0, 0, 0, 0, 0, -1,
+                -1, 0, 0, 0, 0, 0, 0, -1,
+                -1, 0, 0, 0, 0, 0, 0, -1,
+                -1, 0, 0, 0, 0, 0, 0, -1,
+                -1, -30, 0, 0, 0, 0, -30, -1,
+                100, -1, -1, -1, -1, -1, -1, 100,
+            ]
+        
+                # Calculer le nombre de cases vides pour chaque coin
+        carreHG = self.count_empty_tiles(active_board, 0, 0, 3, 3, 0, 3)
+        carreHD = self.count_empty_tiles(active_board, 4, 0, 7, 3, 0, 3)
+        carreBG = self.count_empty_tiles(active_board, 0, 4, 3, 3, 4, 7)
+        carreBD = self.count_empty_tiles(active_board, 4, 4, 7, 7, 4, 7)
+
+        # Créer un dictionnaire des coins et de leurs valeurs
+        coins = {
+            "HG": carreHG,
+            "HD": carreHD,
+            "BG": carreBG,
+            "BD": carreBD
+        }
+
+        # Trouver la valeur minimale parmi les coins
+        min_value = min(coins.values())
+
+        # Trouver tous les coins ayant la même valeur minimale
+        min_coins = [coin for coin, value in coins.items() if value == min_value]
+
+        # Définir les ranges pour chaque coin
+        coin_ranges = {
+            "HD": (0, 4, 4, 8),
+            "HG": (0, 4, 0, 4),
+            "BD": (4, 8, 4, 8),
+            "BG": (4, 8, 0, 4)
+        }
+
+        # Parcourir chaque coin et ajouter les valeurs à la matrice
+        for coin in min_coins:
+            start_row, end_row, start_col, end_col = coin_ranges[coin]
             
+            for row_index in range(start_row, end_row):
+                for col_index in range(start_col, end_col):
+                    index = row_index * 8 + col_index
+                    matrice[indexMatrice] += 1
+                    
+        if active_board.board[2].content == myPlayerColor and active_board.board[2].content != "🟩":
+            matrice[1] +=50
+        else:
+            matrice[1] += -50
         
-   
+        if active_board.board[5].content == myPlayerColor and active_board.board[5].content != "🟩":
+            matrice[6] +=50
+        else:
+            matrice[6] += -50
         
+        if active_board.board[16].content == myPlayerColor and active_board.board[16].content != "🟩":
+            matrice[8] +=50
+        else:
+            matrice[8] += -50
+            
+        if active_board.board[23].content == myPlayerColor and active_board.board[23].content != "🟩":
+            matrice[15] +=50
+        else:
+            matrice[15] += -50
+            
+        if active_board.board[40].content == myPlayerColor and active_board.board[40].content != "🟩":
+            matrice[48] +=50
+        else:
+            matrice[48] += -50
+            
+        if active_board.board[47].content == myPlayerColor and active_board.board[47].content != "🟩":
+            matrice[55] +=50
+        else:
+            matrice[55] += -50
+
+            
+        if active_board.board[47].content == myPlayerColor and active_board.board[47].content != "🟩":
+            matrice[55] +=50
+        else:
+            matrice[55] += -50
+
+            
+        if active_board.board[58].content == myPlayerColor and active_board.board[58].content != "🟩":
+            matrice[57] +=50
+        else:
+            matrice[57] += -50
+
+            
+        if active_board.board[61].content == myPlayerColor and active_board.board[61].content != "🟩":
+            matrice[62] +=50
+        else:
+            matrice[62] += -50
+
+
+       
+ 
+        scoreAM = 0
+        maxScoreAM = -1000
+        tableau = []
+        index = 0
         for tile_ammount in active_board.board:   
             tile_coordinate= active_board.is_legal_move(tile_ammount.x_pos,tile_ammount.y_pos,active_game.active_player)
-     
+
             if(tile_coordinate != False) :
                 score = 0
-                # print([tile_ammount.x_pos,tile_ammount.y_pos])
-
                 for point in tile_coordinate:
                     score += point[0]
+                
                 score +=matrice[index]
-                    
+                
+                
+                if scoreAM > maxScoreAM:
+                    max_score = score
+                    tableau = [point,[tile_ammount.x_pos,tile_ammount.y_pos]]
+                elif scoreAM == scoreAM:
+                    tableau.append(point,[tile_ammount.x_pos,tile_ammount.y_pos])
+                
                 if score > max_score:
                     max_score = score
                     point_array = [[tile_ammount.x_pos,tile_ammount.y_pos]]
@@ -383,6 +428,7 @@ class Bot:
                     point_array.append([tile_ammount.x_pos,tile_ammount.y_pos])
                     
             index += 1
+            # print("je sui AM",tableau)
         return random.choice(point_array)
 
 
@@ -400,7 +446,7 @@ class Bot2:
         point_array= []
         for tile_ammount in active_board.board:   
             tile_coordinate= active_board.is_legal_move(tile_ammount.x_pos,tile_ammount.y_pos,active_game.active_player)
-     
+
             if(tile_coordinate != False) :
                 score = 0
                 for point in tile_coordinate:
@@ -416,7 +462,7 @@ class Bot2:
 
 
 
-class Bot2:
+class Bot3:
     def __init__(self):
         self.name = "Name of your Bot"
 
@@ -454,7 +500,7 @@ othello_board.create_board()
 othello_board.draw_board("Content")
 
 # Create 2 bots
-myBot = Bot()
+meruem = MERUEM()
 otherBot = Bot2()
 
 # Loop until the game is over
@@ -466,7 +512,7 @@ while not othello_game.is_game_over:
         # move_coordinates[1] = int(input("Coordonnées en Y: "))
         # othello_game.place_pawn(
         #     move_coordinates[0], move_coordinates[1], othello_board, othello_game.active_player)
-        move_coordinates = myBot.check_valid_moves(othello_board,othello_game)
+        move_coordinates = meruem.check_valid_moves(othello_board,othello_game)
         othello_game.place_pawn(move_coordinates[0], move_coordinates[1], othello_board, othello_game.active_player)
 
 
