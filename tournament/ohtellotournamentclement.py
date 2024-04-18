@@ -389,8 +389,6 @@ class Bot:
         # First player / bot logic goes here
         if(newGame.active_player != "⚫"):
             move_coordinates = myBot.check_valid_moves(newBoard,newGame)
-            
- 
             othello_game.place_pawn(move_coordinates[0], move_coordinates[1], othello_board, othello_game.active_player)
         
             
@@ -505,8 +503,6 @@ class Bot:
                     point_array.append([tile_ammount.x_pos,tile_ammount.y_pos])
                     
             index += 1
-            print("score noir ",active_game.score_black) #scoreNaprèsblanc
-            print("score blacn", active_game.score_white)
         return random.choice(point_array)
 class CrotoBotEz:
     def __init__(self):
