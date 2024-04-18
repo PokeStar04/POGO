@@ -1,5 +1,6 @@
 import random
 import time
+import copy
 
 # Object used to create new boards
 
@@ -373,8 +374,31 @@ class Bot3:
 
 
 class Bot:
+
     def __init__(self):
         self.name = "Name of your Bot"
+
+
+    def ops(self,active_board, active_game,x,y):
+        newBoard = copy.deepcopy(active_board)
+        newGame = copy.deepcopy(active_game)
+        newGame.place_pawn(x,y,newBoard,newGame.active_player)
+      
+        print( "test1",newGame.score_black) #scoreNavantblanc
+        print( newGame.score_white)
+        # First player / bot logic goes here
+        if(newGame.active_player != "⚫"):
+            move_coordinates = myBot.check_valid_moves(newBoard,newGame)
+            
+ 
+            othello_game.place_pawn(move_coordinates[0], move_coordinates[1], othello_board, othello_game.active_player)
+        
+            
+        # Second player / bot logic goes here 
+      
+            
+        #return le score
+        
 
     # BOT FUNCTIONS
 
@@ -391,71 +415,71 @@ class Bot:
         if (myPlayer == "⚫"):
             if tour < 20 :
                 matrice = [
-                    10, -2, 2, 2, 2, 2, -2, 10,
+                    10, -2, 2, 3, 3, 2, -2, 10,
                     -2, -5, 1, 1, 1, 1, -5,  -2,
-                    2, 1, 2, 0, 0, 2, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 2, 0, 0, 2, 1,  2,
+                    2, 1, 5, 0, 0, 5, 1,  2,
+                    3, 1, 0, 0, 0, 0, 1,  3,
+                    3, 1, 0, 0, 0, 0, 1,  3,
+                    2, 1, 5, 0, 0, 5, 1,  2,
                     -2, -5, 1, 1, 1, 1, -5,  -2,
-                    10, -2, 2, 2, 2, 2, -2, 10,
+                    10, -2, 2, 3, 3, 2, -2, 10,
                 ]
             elif tour < 40:
                  matrice = [
-                    10, -2, 2, 2, 2, 2, -2, 10,
+                    10, -2, 2, 3, 3, 2, -2, 10,
                     -2, -5, 1, 1, 1, 1, -5,  -2,
-                    2, 1, 2, 0, 0, 2, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 2, 0, 0, 2, 1,  2,
+                    2, 1, 5, 0, 0, 5, 1,  2,
+                    3, 1, 0, 0, 0, 0, 1,  3,
+                    3, 1, 0, 0, 0, 0, 1,  3,
+                    2, 1, 5, 0, 0, 5, 1,  2,
                     -2, -5, 1, 1, 1, 1, -5,  -2,
-                    10, -2, 2, 2, 2, 2, -2, 10,
+                    10, -2, 2, 3, 3, 2, -2, 10,
                 ]
             else :
                     matrice = [
-                    10, -2, 2, 2, 2, 2, -2, 10,
+                    10, -2, 2, 3, 3, 2, -2, 10,
                     -2, -5, 1, 1, 1, 1, -5,  -2,
-                    2, 1, 2, 0, 0, 2, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 2, 0, 0, 2, 1,  2,
+                    2, 1, 5, 0, 0, 5, 1,  2,
+                    3, 1, 0, 0, 0, 0, 1,  3,
+                    3, 1, 0, 0, 0, 0, 1,  3,
+                    2, 1, 5, 0, 0, 5, 1,  2,
                     -2, -5, 1, 1, 1, 1, -5,  -2,
-                    10, -2, 2, 2, 2, 2, -2, 10,
+                    10, -2, 2, 3, 3, 2, -2, 10,
                 ]
         else:
             # mon joueur est blanc
             if tour < 8 :
                  matrice = [
-                    10, -2, 2, 2, 2, 2, -2, 10,
+                    10, -2, 2, 3, 3, 2, -2, 10,
                     -2, -5, 1, 1, 1, 1, -5,  -2,
-                    2, 1, 2, 0, 0, 2, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 2, 0, 0, 2, 1,  2,
+                    2, 1, 5, 0, 0, 5, 1,  2,
+                    3, 1, 0, 0, 0, 0, 1,  3,
+                    3, 1, 0, 0, 0, 0, 1,  3,
+                    2, 1, 5, 0, 0, 5, 1,  2,
                     -2, -5, 1, 1, 1, 1, -5,  -2,
-                    10, -2, 2, 2, 2, 2, -2, 10,
+                    10, -2, 2, 3, 3, 2, -2, 10,
                 ]
             elif tour < 40:
               matrice = [
-                    10, -2, 2, 2, 2, 2, -2, 10,
+                    10, -2, 2, 3, 3, 2, -2, 10,
                     -2, -5, 1, 1, 1, 1, -5,  -2,
-                    2, 1, 2, 0, 0, 2, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 2, 0, 0, 2, 1,  2,
+                    2, 1, 5, 0, 0, 5, 1,  2,
+                    3, 1, 0, 0, 0, 0, 1,  3,
+                    3, 1, 0, 0, 0, 0, 1,  3,
+                    2, 1, 5, 0, 0, 5, 1,  2,
                     -2, -5, 1, 1, 1, 1, -5,  -2,
-                    10, -2, 2, 2, 2, 2, -2, 10,
+                    10, -2, 2, 3, 3, 2, -2, 10,
                 ]
             else :
                  matrice = [
-                    10, -2, 2, 2, 2, 2, -2, 10,
+                    10, -2, 2, 3, 3, 2, -2, 10,
                     -2, -5, 1, 1, 1, 1, -5,  -2,
-                    2, 1, 2, 0, 0, 2, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 0, 0, 0, 0, 1,  2,
-                    2, 1, 2, 0, 0, 2, 1,  2,
+                    2, 1, 5, 0, 0, 5, 1,  2,
+                    3, 1, 0, 0, 0, 0, 1,  3,
+                    3, 1, 0, 0, 0, 0, 1,  3,
+                    2, 1, 5, 0, 0, 5, 1,  2,
                     -2, -5, 1, 1, 1, 1, -5,  -2,
-                    10, -2, 2, 2, 2, 2, -2, 10,
+                    10, -2, 2, 3, 3, 2, -2, 10,
                 ]
             
         
@@ -471,6 +495,8 @@ class Bot:
                 for point in tile_coordinate:
                     score += point[0]
                 score +=matrice[index]
+
+                score-= self.ops(active_board,active_game,tile_ammount.x_pos,tile_ammount.y_pos) 
                     
                 if score > max_score:
                     max_score = score
@@ -479,6 +505,8 @@ class Bot:
                     point_array.append([tile_ammount.x_pos,tile_ammount.y_pos])
                     
             index += 1
+            print("score noir ",active_game.score_black) #scoreNaprèsblanc
+            print("score blacn", active_game.score_white)
         return random.choice(point_array)
 class CrotoBotEz:
     def __init__(self):
@@ -579,7 +607,7 @@ def play_games(number_of_games, timeout_value):
 
             # Second player / bot logic goes here
             else:
-               move_coordinates = croto_bot.check_valid_moves(othello_board,othello_game)
+               move_coordinates = myBot.check_valid_moves(othello_board,othello_game)
                othello_game.place_pawn(move_coordinates[0], move_coordinates[1], othello_board, othello_game.active_player)
         
         if(othello_game.winner == "⚫"):
